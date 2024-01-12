@@ -13,14 +13,14 @@ The app consists of two simple components
 
 ```bash
 cd api
-spin build && spin up --sqlite @migration.sql --listen 0.0.0.0:3000
+spin build && spin up --sqlite @migration.sql --listen 0.0.0.0:3001
 ```
 
 ### Frontend
 
 ```bash
 cd frontend
-spin build && spin up --listen 0.0.0.0:3001
+spin build && spin up --listen 0.0.0.0:3000
 ```
 
 ## CORS configuration
