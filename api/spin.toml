@@ -1,0 +1,29 @@
+spin_manifest_version = 2
+
+[application]
+name = "api"
+version = "0.1.0"
+authors = ["Thorsten Hans <thorsten.hans@gmail.com>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "api"
+
+[component.api]
+source = "target/wasm32-wasi/release/api.wasm"
+allowed_outbound_hosts = []
+sqlite_databases = ["default"]
+
+[component.api.variables]
+cors_allowed_origins = "http://localhost:3000"
+cors_allowed_methods = "*"
+cors_allowed_headers = "*"
+cors_allow_credentials = "true"
+cors_max_age = "3600"
+
+
+
+[component.api.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]

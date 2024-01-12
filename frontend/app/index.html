@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        // fetch all items from /api/items and display them as a list in #result
+        fetch('http://localhost:3001/api/items')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.createElement('ul');
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.innerText = item.name;
+                    list.appendChild(listItem);
+                });
+                document.getElementById('result').appendChild(list);
+            });
+    </script>
+    <button onclick="fetch('http://localhost:3001/api/items', { method: 'POST', body: JSON.stringify({ name: 'New Item' }) })">Add Item</button>
+</body>
+</html>
